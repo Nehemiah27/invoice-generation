@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  invoice-generation-rest-app:
+    image: invoice-generation-rest-api-image
+    stdin_open: true
+    command: node index.js
+    env_file:
+      - ".production.env"
+    ports:
+      - "40002:443"
+    networks:
+      - invoice-generation
+    depends_on:
+      - db-server-invoice-generation
+    restart: "unless-stopped"
+
+  db-server-invoice-generation:
+    image: mongo:4.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: invoice_generation_admin
+      MONGO_INITDB_ROOT_PASSWORD: 2b0YlZxL79D
+      MONGO_INITDB_DATABASE: admin
+    ports:
+      - "40003:27017"
+    networks:
+      - invoice-generation
+    volumes:
+      - db-storage-invoice-generation:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    restart: "unless-stopped"
+
+networks:
+  invoice-generation:
+    driver: bridge
+volumes:
+  db-storage-invoice-generation:
+    driver: local
