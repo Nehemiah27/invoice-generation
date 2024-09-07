@@ -155,4 +155,4 @@ The results from the matching stage are then sorted in descending order of creat
 ## Repo Cloning & Production Access
 
 - **Cloning**: To Clone the repo, hit the URL in bash with command as git clone https://github.com/Nehemiah27/invoice-generation.git
-- **Production**: To Access production Database, hit the URL "mongodb://invoice_generation_db_owner:i5u3h1PHb61@92.205.63.217:40003/invoice_generation" in the Mongoose Compass
+- **Production**: To Access production Database, hit the URL "mongodb://invoice_generation_db_owner:i5u3h1PHb61@92.205.63.217:40003/invoice_generation" in the MongoDB Compass
