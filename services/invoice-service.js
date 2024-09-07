@@ -42,13 +42,13 @@ export const invoiceList = async (userID) => {
       $project: {
         imgDownloadLink: {
           $concat: [
-            `${envCaptured.baseURL}/api/v1/invoices/generate-img/`,
+            `${envCaptured.baseURL}/v1/invoices/generate-img/`,
             "$invoiceID",
           ],
         },
         pdfDownloadLink: {
           $concat: [
-            `${envCaptured.baseURL}/api/v1/invoices/generate-pdf/`,
+            `${envCaptured.baseURL}/v1/invoices/generate-pdf/`,
             "$invoiceID",
           ],
         },
